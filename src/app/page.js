@@ -1,5 +1,9 @@
 "use client";
 
+import { PostOwner } from "@/components/PostOwner";
+import { comments } from "@/libs/comments";
+import { Comment } from "@/components/Comment";
+import { Reply } from "@/components/Reply";
 export default function HomePage() {
   return (
     <div
@@ -12,7 +16,7 @@ export default function HomePage() {
         className="mx-auto p-3 rounded rounded-3 shadow-sm bg-white"
       >
         {/* Post Owner Example*/}
-        <div className="vstack gap-3">
+        {/* <div className="vstack gap-3">
           <div className="d-flex align-items-center gap-3">
             <img
               src="/profileImages/handsome.jpg"
@@ -31,10 +35,15 @@ export default function HomePage() {
             <span className="text-muted">100 คน</span>
           </div>
           <hr className="m-0 border" />
-        </div>
+        </div> */}
+        <PostOwner
+          fullname="Pimmada Wangsombat"
+          studentId="650610793"
+          post="Quiz ง่ายจังเลยครับ ขอยาก ๆ กว่านี้ได้ไหม #261207"
+        ></PostOwner>
 
         {/* Comment Example */}
-        <div className="d-flex gap-2 my-2">
+        {/* <div className="d-flex gap-2 my-2">
           <img
             src="/profileImages/lisa.jpg"
             width="48"
@@ -54,10 +63,10 @@ export default function HomePage() {
               <span className="text-muted">999 คน</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Reply Example */}
-        <div className="d-flex gap-2 my-2 ps-5">
+        {/* <div className="d-flex gap-2 my-2 ps-5">
           <img
             src="/profileImages/puppy.jpg"
             width="48"
@@ -77,9 +86,19 @@ export default function HomePage() {
               <span className="text-muted">2 คน</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* map-loop render Comment component here */}
+        {
+          /* map-loop render Comment component here */ comments.map((ment) => (
+            <Comment
+              key={ment.userImagePath}
+              userImagePath={ment.userImagePath}
+              username={ment.username}
+              commentText={ment.commentText}
+              likeNum={ment.likeNum}
+            />
+          ))
+        }
       </div>
     </div>
   );
